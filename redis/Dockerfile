@@ -3,6 +3,10 @@ MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 RUN groupadd -r redis && useradd -r -g redis
 
+
+
+
+
 RUN dnf install wget \
         && dnf install tar 
 
@@ -11,9 +15,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		wget \
 	&& rm -rf /var/lib/apt/lists/*
 
+
+
+
+
 ENV REDIS_VERSAO 3.2.8
 ENV REDIS_URL_DOWNLOAD http://download.redis.io/releases/redis-$REDIS_VERSAO.tar.gz
 ENV REDIS_SHA1_DOWNLOAD 6780d1abb66f33a97aad0edbe020403d0a15b67f
+
+
+
+
+
 
 RUN set -ex \
 	\
@@ -29,6 +42,11 @@ RUN set -ex \
 	&& rm redis.tar.gz \
 	&& make -C /usr/src/redis \
 	&& make -C /usr/src/redis install
+
+
+
+
+
 
 RUN mkdir /data && chown redis:redis /data
 VOLUME /data
