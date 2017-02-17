@@ -5,7 +5,7 @@ RUN groupadd -r redis && useradd -r -g redis redis
 
 RUN dnf -y install wget \
         && dnf -y install tar \
-        && dnf -y group info "C Development Tools and Libraries" 
+        && dnf -y group install "C Development Tools and Libraries" 
 
 ENV REDIS_VERSAO 3.2.8
 ENV REDIS_URL_DOWNLOAD http://download.redis.io/releases/redis-$REDIS_VERSAO.tar.gz
