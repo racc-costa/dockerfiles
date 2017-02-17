@@ -4,15 +4,15 @@
 ## Running as standalone server
 
 . TODO
-.. TODO
+. TODO
 
 ## Running as master / slaves
 
 . TODO
-.. TODO
+. TODO
 
 ## Running as a cluster
 
 . TODO
-.. TODO
+. TODO
 
