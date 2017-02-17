@@ -1,31 +1,50 @@
-FROM fedora:25
+FROM debian:jessie
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
+# Add our user and group for redis
 RUN groupadd -r redis && useradd -r -g redis redis
 
-RUN dnf -y install wget \
-        && dnf -y install tar \
-        && dnf -y group install "C Development Tools and Libraries" 
+# Updating and installing some tools
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends ca-certificates wget \
+	&& apt-get install -y ruby \
+	&& rm -rf /var/lib/apt/lists/*
 
-ENV REDIS_VERSAO 3.2.8
-ENV REDIS_URL_DOWNLOAD http://download.redis.io/releases/redis-$REDIS_VERSAO.tar.gz
-ENV REDIS_SHA1_DOWNLOAD 6780d1abb66f33a97aad0edbe020403d0a15b67f
+# Redis variables
+ENV REDIS_VERSION 3.2.8
+ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-3.2.8.tar.gz
+ENV REDIS_DOWNLOAD_SHA1 6780d1abb66f33a97aad0edbe020403d0a15b67f
+ENV REDIS_DIR /usr/redis
 
-RUN wget -O redis.tar.gz "$REDIS_URL_DOWNLOAD" 	
-RUN echo "$REDIS_SHA1_DOWNLOAD *redis.tar.gz" | sha1sum -c - 
-RUN mkdir -p /usr/src/redis	
-RUN tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1
-RUN rm redis.tar.gz
-RUN make -C /usr/src/redis
-RUN make -C /usr/src/redis install 
-RUN dnf -y group remove "C Development Tools and Libraries"
+# Copying settings
+RUN mkdir $REDIS_DIR
+COPY redis.conf         $REDIS_DIR/redis.conf  
+COPY redis-cluster.conf $REDIS_DIR/redis-cluster.conf
 
+RUN set -ex \
+	\
+	&& buildDeps=' \
+		gcc \
+		libc6-dev \
+		make \
+	' \
+	&& apt-get update \
+	&& apt-get install -y $buildDeps --no-install-recommends \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& wget -O redis.tar.gz "$REDIS_DOWNLOAD_URL" \
+	&& echo "$REDIS_DOWNLOAD_SHA1 *redis.tar.gz" | sha1sum -c - \
+	&& mkdir -p /usr/src/redis \
+	&& tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1 \
+	&& rm redis.tar.gz \
+	&& cp /usr/src/redis/src/redis-trib.rb $REDIS_DIR/redis-trib.rb \
+	&& make -C /usr/src/redis \
+	&& make -C /usr/src/redis install \
+	&& apt-get purge -y --auto-remove $buildDeps \
+	&& rm -r /usr/src/redis
+	
 RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
-
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 6379
 CMD ["redis-server"]
