@@ -2,17 +2,11 @@
 
 ## Redis
 ## Running as standalone server
+//TODO
 
-. TODO
-. TODO
+## Running as master/slaves (Replication)
+//TODO
 
-## Running as master / slaves
-
-. TODO
-. TODO
-
-## Running as a cluster
-
-. TODO
-. TODO
+## Running as a cluster (Sharding)
+//TODO
 
