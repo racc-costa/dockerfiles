@@ -1,12 +1,12 @@
 # My Docker files
 
 ## Redis
-## Running as standalone server
+3## Running as standalone server
 //TODO
 
-## Running as master/slaves (Replication)
+3## Running as master/slaves (Replication)
 //TODO
 
-## Running as a cluster (Sharding)
+3## Running as a cluster (Sharding)
 //TODO
 
