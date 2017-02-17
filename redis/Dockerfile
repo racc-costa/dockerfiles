@@ -3,8 +3,8 @@ MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 RUN groupadd -r redis && useradd -r -g redis redis
 
-RUN dnf install wget \
-        && dnf install tar 
+RUN dnf -y install wget \
+        && dnf -y install tar 
 
 ENV REDIS_VERSAO 3.2.8
 ENV REDIS_URL_DOWNLOAD http://download.redis.io/releases/redis-$REDIS_VERSAO.tar.gz
