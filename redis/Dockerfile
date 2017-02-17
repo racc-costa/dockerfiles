@@ -10,8 +10,8 @@ ENV REDIS_VERSAO 3.2.8
 ENV REDIS_URL_DOWNLOAD http://download.redis.io/releases/redis-$REDIS_VERSAO.tar.gz
 ENV REDIS_SHA1_DOWNLOAD 6780d1abb66f33a97aad0edbe020403d0a15b67f
 
-RUN echo "$REDIS_SHA1_DOWNLOAD *redis.tar.gz" | sha1sum -c - 
 RUN wget -O redis.tar.gz "$REDIS_URL_DOWNLOAD" 	
+RUN echo "$REDIS_SHA1_DOWNLOAD *redis.tar.gz" | sha1sum -c - 
 RUN mkdir -p /usr/src/redis	
 RUN tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1
 RUN rm redis.tar.gz
