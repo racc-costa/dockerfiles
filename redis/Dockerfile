@@ -8,6 +8,7 @@ RUN groupadd -r redis && useradd -r -g redis redis
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends ca-certificates wget \
 	&& apt-get install -y ruby \
+	&& gem install redis \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Redis variables
