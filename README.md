@@ -1,6 +1,6 @@
 # My Docker files
 
-## Redis
+## Redis - https://hub.docker.com/r/racccosta/redis/
 ### Running as standalone server
 //TODO
 
