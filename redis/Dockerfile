@@ -1,7 +1,7 @@
 FROM fedora:25
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-RUN groupadd -r redis && useradd -r -g redis
+RUN groupadd -r redis && useradd -r -g redis redis
 
 RUN dnf install wget \
         && dnf install tar 
