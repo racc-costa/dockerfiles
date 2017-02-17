@@ -18,6 +18,7 @@ RUN tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1
 RUN rm redis.tar.gz
 RUN make -C /usr/src/redis
 RUN make -C /usr/src/redis install 
+RUN dnf -y group remove "C Development Tools and Libraries"
 
 RUN mkdir /data && chown redis:redis /data
 VOLUME /data
