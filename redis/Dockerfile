@@ -21,6 +21,7 @@ ENV REDIS_DIR /usr/redis
 RUN mkdir $REDIS_DIR
 COPY redis.conf         $REDIS_DIR/redis.conf  
 COPY redis-cluster.conf $REDIS_DIR/redis-cluster.conf
+COPY sentinel.conf      $REDIS_DIR/sentinel.conf
 
 # Downloading, unpacking and compiling Redis
 RUN set -ex \
@@ -49,5 +50,5 @@ RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
 
-EXPOSE 6379
+EXPOSE 6379 26379
 CMD ["redis-server", "/usr/redis/redis.conf"]
