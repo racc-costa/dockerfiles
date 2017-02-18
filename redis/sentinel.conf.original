@@ -37,7 +37,7 @@ port 26379
 # provided, the Sentinel will announce the specified IP and the server port
 # as specified by the "port" option. If only announce-port is provided, the
 # Sentinel will announce the auto-detected local IP and the specified port.
-#
+
 # Example:
 #
 # sentinel announce-ip 1.2.3.4
