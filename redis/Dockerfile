@@ -4,7 +4,7 @@ MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 # Add our user and group for redis
 RUN groupadd -r redis && useradd -r -g redis redis
 
-# Updating and installing some tools
+# Updating and installing some tools including ruby
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends ca-certificates wget \
 	&& apt-get install -y ruby \
@@ -22,6 +22,7 @@ RUN mkdir $REDIS_DIR
 COPY redis.conf         $REDIS_DIR/redis.conf  
 COPY redis-cluster.conf $REDIS_DIR/redis-cluster.conf
 
+# Downloading, unpacking and compiling Redis
 RUN set -ex \
 	\
 	&& buildDeps=' \
@@ -43,9 +44,10 @@ RUN set -ex \
 	&& apt-get purge -y --auto-remove $buildDeps \
 	&& rm -r /usr/src/redis
 	
+# Persistence folder	
 RUN mkdir /data && chown redis:redis /data
 VOLUME /data
 WORKDIR /data
 
 EXPOSE 6379
-CMD ["redis-server"]
+CMD ["redis-server", "/usr/redis/redis.conf"]
