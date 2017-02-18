@@ -5,7 +5,7 @@ This image contains the official version of Redis ([http://download.redis.io/rel
 
 # Supported tags and respective `Dockerfile` links
 
--	[3.2.8 (3.2.8.0/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/redis/Dockerfile)
+-	[3.2.8 (3.2.8/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/redis/Dockerfile)
 
 ## Usage
 
