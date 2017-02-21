@@ -18,20 +18,20 @@ To boot in standalone mode:
 To build a master with 2 slaves (Replication):
 
 	docker network create redis-net
-	docker run -d -p 6380:6379 --name redis    --net redis-net racccosta/redis:3.2.8
-	docker run -d -p 6381:6379 --name redis-s1 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis.conf --slaveof redis 6379
-	docker run -d -p 6382:6379 --name redis-s2 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis.conf --slaveof redis 6379
+	docker run -d -p 6379:6379 --name redis    --net redis-net racccosta/redis:3.2.8
+	docker run -d -p 6380:6379 --name redis-s1 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis.conf --slaveof redis 6379
+	docker run -d -p 6381:6379 --name redis-s2 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis.conf --slaveof redis 6379
 
 
 To create a cluster with 3 master and 3 replicas (Sharding):
 
 	docker network create redis-net
-	docker run -d -p 6385:6379 --name redis-c1 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
-	docker run -d -p 6386:6379 --name redis-c2 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
-	docker run -d -p 6387:6379 --name redis-c3 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
-	docker run -d -p 6388:6379 --name redis-c4 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
-	docker run -d -p 6389:6379 --name redis-c5 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
-	docker run -d -p 6390:6379 --name redis-c6 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
+	docker run -d -p 6379:6379 --name redis-c1 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
+	docker run -d -p 6380:6379 --name redis-c2 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
+	docker run -d -p 6381:6379 --name redis-c3 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
+	docker run -d -p 6382:6379 --name redis-c4 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
+	docker run -d -p 6383:6379 --name redis-c5 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
+	docker run -d -p 6384:6379 --name redis-c6 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis-cluster.conf
 	
 	docker exec -it redis-c1 /usr/redis/redis-trib.rb create --replicas 1 172.18.0.2:6379 172.18.0.3:6379 172.18.0.4:6379 172.18.0.5:6379 172.18.0.6:6379 172.18.0.7:6379
 
@@ -39,13 +39,13 @@ To create a cluster with 3 master and 3 replicas (Sharding):
 To build a master with 2 slaves (Replication) and 3 Sentinels (High availability):
 
 	docker network create redis-net
-	docker run -d -p 6380:6379 --name redis    --net redis-net racccosta/redis:3.2.8
-	docker run -d -p 6381:6379 --name redis-s1 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis.conf --slaveof redis 6379
-	docker run -d -p 6382:6379 --name redis-s2 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis.conf --slaveof redis 6379
+	docker run -d -p 6379:6379 --name redis    --net redis-net racccosta/redis:3.2.8
+	docker run -d -p 6380:6379 --name redis-s1 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis.conf --slaveof redis 6379
+	docker run -d -p 6381:6379 --name redis-s2 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/redis.conf --slaveof redis 6379
 
-	docker run -d -p 6395:6379 --name sentinel1 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/sentinel.conf --sentinel
-	docker run -d -p 6396:6379 --name sentinel2 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/sentinel.conf --sentinel
-	docker run -d -p 6397:6379 --name sentinel3 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/sentinel.conf --sentinel
+	docker run -d -p 26379:26379 --name sentinel1 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/sentinel.conf --sentinel
+	docker run -d -p 26380:26379 --name sentinel2 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/sentinel.conf --sentinel
+	docker run -d -p 26381:26379 --name sentinel3 --net redis-net racccosta/redis:3.2.8 redis-server /usr/redis/sentinel.conf --sentinel
 	
 	docker exec sentinel1 redis-cli SENTINEL MONITOR redis 172.18.0.2 6379 2 
 	docker exec sentinel2 redis-cli SENTINEL MONITOR redis 172.18.0.2 6379 2 
@@ -55,9 +55,9 @@ To build a master with 2 slaves (Replication) and 3 Sentinels (High availability
 	docker exec sentinel2 redis-cli SENTINEL SET redis down-after-milliseconds 3000
 	docker exec sentinel3 redis-cli SENTINEL SET redis down-after-milliseconds 3000
 	
-	docker exec sentinel1 redis-cli SENTINEL SET redis failover-timeout 180000
-	docker exec sentinel2 redis-cli SENTINEL SET redis failover-timeout 180000
-	docker exec sentinel3 redis-cli SENTINEL SET redis failover-timeout 180000
+	docker exec sentinel1 redis-cli SENTINEL SET redis failover-timeout 10000
+	docker exec sentinel2 redis-cli SENTINEL SET redis failover-timeout 10000
+	docker exec sentinel3 redis-cli SENTINEL SET redis failover-timeout 10000
 	
 	docker exec sentinel1 redis-cli SENTINEL SET redis parallel-syncs 5
 	docker exec sentinel2 redis-cli SENTINEL SET redis parallel-syncs 5
