@@ -101,7 +101,7 @@ Redis documentation is available on [Redis website](https://redis.io).
 
 ## Source
 
-The source is available on [GitHub](https://redis.io/topics/sentinel).
+The source is available on [GitHub](https://github.com/racc-costa/dockerfiles/tree/master/redis).
 
 
 ## Issues
