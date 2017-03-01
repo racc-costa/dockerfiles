@@ -1,16 +1,19 @@
 FROM debian:jessie
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-# Add our user and group for redis
+# Add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN groupadd -r redis && useradd -r -g redis redis
 
 # Updating and installing some tools including ruby
-RUN apt-get update \
-	&& apt-get install -y --no-install-recommends ca-certificates wget \
-	&& apt-get install -y ruby \
-	&& gem install redis \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	ca-certificates \
+	wget \
+	ruby \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN gem install redis \
+	&& rm -rf /var/lib/apt/lists/*
+	
 # Redis variables
 ENV REDIS_VERSION 3.2.8
 ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-3.2.8.tar.gz
