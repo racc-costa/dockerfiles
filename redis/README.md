@@ -1,6 +1,6 @@
-# Unofficial Redis Docker image
+# Redis Docker image
 
-This image contains the official version of Redis ([http://download.redis.io/releases](http://download.redis.io/releases)) and the dependencies for running Ruby scripts such as redis-trib.br that provides resources for clustering.
+This image contains the official version of Redis ([http://download.redis.io/releases](http://download.redis.io/releases)) and the dependencies for running Ruby scripts such as redis-trib.br that provides resources for clustering on Debian.
 
 
 # Supported tags and respective `Dockerfile` links
