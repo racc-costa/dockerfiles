@@ -19,11 +19,15 @@ COPY oracle_rpmaa oracle_rpmab oracle_rpmac oracle_rpmad $ORACLE_RSP $START_FILE
 # Updating and installing Oracle
 RUN yum -y install unzip libaio bc initscripts net-tools openssl && \
 	yum clean all && \
+	mv /usr/bin/free /usr/bin/free.bak && \
+	printf "#!/bin/sh\necho Swap - - 2048" > /usr/bin/free && \
+	chmod +x /usr/bin/free && \
 	cd $ORACLE_DIR && \
 	cat oracle_rpm* > $ORACLE_RPM && \
 	unzip $ORACLE_RPM && \
 	rm $ORACLE_RPM &&    \
 	rpm -i Disk1/*.rpm &&    \
+	mv /usr/bin/free.bak /usr/bin/free && \
 	mkdir $ORACLE_BASE/oradata && \
 	chown -R oracle:dba $ORACLE_BASE && \
 	mv $ORACLE_DIR/$ORACLE_RSP $ORACLE_BASE/ && \
