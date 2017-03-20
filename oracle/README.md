@@ -12,6 +12,10 @@ This image contains the official version of Oracle Database ([https://www.oracle
 
 To run:
 
+	docker run -d -p 1521:1521 -p 8080:8080 --name oracle --shm-size=1g racccosta/oracle:11.2.0.2-xe
+
+or
+
 	docker run -d -p 1521:1521 -p 8080:8080 --name oracle --shm-size=1g -v /app/data:/u01/app/oracle/oradata racccosta/oracle:11.2.0.2-xe
 	
 
