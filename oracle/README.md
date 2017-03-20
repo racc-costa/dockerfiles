@@ -23,9 +23,9 @@ Wait about 2 minutes until log shows Oracle is ready to use!
 	docker logs -f oracle 	
 
 
-Defaul password:
+Default password:
 
-	For sys and system users the password is 'oracle'.
+	For 'sys' and 'system' users the password is 'oracle'.
 
 Using sqlplus:
 
