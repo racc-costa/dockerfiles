@@ -1,6 +1,6 @@
-# Unofficial Oracle Database image
+# Oracle Database image
 
-This image contains Oracle Database.
+This image contains the official version of Oracle Database ([https://www.oracle.com/database](https://www.oracle.com/database)) on Oracle Linux.
 
 
 # Supported tags and respective `Dockerfile` links
@@ -23,6 +23,10 @@ Wait about 2 minutes until log shows Oracle is ready to use!
 	docker logs -f oracle 	
 
 
+Defaul password:
+
+	For sys and system users the password is 'oracle'.
+
 Using sqlplus:
 
 	docker exec -it oracle sqlplus system/oracle@localhost:1521/xe 
@@ -39,7 +43,7 @@ Username: admin
 Password: oracle
 
 
-## Persistence folder	
+## Persistence folder
 -	/u01/app/oracle/oradata
 
 
