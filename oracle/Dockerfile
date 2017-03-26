@@ -1,14 +1,6 @@
 FROM oraclelinux:7-slim
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-# Installing SSH and Supervisor
-RUN yum -y install openssh-server python-setuptools && \
-	yum clean all && \
-	easy_install supervisor
-	
-COPY supervisord.conf /etc/supervisord.conf
-RUN mkdir -p /var/run/sshd /var/log/supervisor
-
 # Environment variables
 ENV ORACLE_BASE=/u01/app/oracle \
 	ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe \
@@ -21,12 +13,11 @@ ENV ORACLE_BASE=/u01/app/oracle \
 
 ENV PATH=$ORACLE_HOME/bin:$PATH
 
-# Copying Oracle files
+# Copying files
 COPY oracle_rpmaa oracle_rpmab oracle_rpmac oracle_rpmad $ORACLE_RSP $START_FILE $PWD_FILE $ORACLE_DIR/
 
-
 # Updating and installing Oracle
-RUN yum -y install unzip libaio bc initscripts net-tools openssl openssh-server supervisor && \
+RUN yum -y install unzip libaio bc initscripts net-tools openssl && \
 	yum clean all && \
 	mv /usr/bin/free /usr/bin/free.bak && \
 	printf "#!/bin/sh\necho Swap - - 2048" > /usr/bin/free && \
@@ -51,5 +42,5 @@ RUN yum -y install unzip libaio bc initscripts net-tools openssl openssh-server 
 # Persistence folder
 VOLUME ["$ORACLE_BASE/oradata"]
 
-EXPOSE 22 1521 8080
-CMD ["/usr/bin/supervisord"]
+EXPOSE 1521 8080
+CMD $ORACLE_BASE/$START_FILE
