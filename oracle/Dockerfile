@@ -1,6 +1,14 @@
 FROM oraclelinux:7-slim
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
+# Installing SSH and Supervisor
+RUN yum -y install openssh-server python-setuptools && \
+	yum clean all && \
+	easy_install supervisor
+	
+COPY supervisord.conf /etc/supervisord.conf
+RUN mkdir -p /var/run/sshd /var/log/supervisor
+
 # Environment variables
 ENV ORACLE_BASE=/u01/app/oracle \
 	ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe \
@@ -13,13 +21,9 @@ ENV ORACLE_BASE=/u01/app/oracle \
 
 ENV PATH=$ORACLE_HOME/bin:$PATH
 
-# Copying files
+# Copying Oracle files
 COPY oracle_rpmaa oracle_rpmab oracle_rpmac oracle_rpmad $ORACLE_RSP $START_FILE $PWD_FILE $ORACLE_DIR/
 
-# Installing SSH and Supervisor
-RUN yum -y install openssh-server supervisor && yum clean all
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-RUN mkdir -p /var/run/sshd /var/log/supervisor
 
 # Updating and installing Oracle
 RUN yum -y install unzip libaio bc initscripts net-tools openssl openssh-server supervisor && \
