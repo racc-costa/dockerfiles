@@ -16,8 +16,13 @@ ENV PATH=$ORACLE_HOME/bin:$PATH
 # Copying files
 COPY oracle_rpmaa oracle_rpmab oracle_rpmac oracle_rpmad $ORACLE_RSP $START_FILE $PWD_FILE $ORACLE_DIR/
 
+# Installing SSH and Supervisor
+RUN yum -y install openssh-server supervisor && yum clean all
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN mkdir -p /var/run/sshd /var/log/supervisor
+
 # Updating and installing Oracle
-RUN yum -y install unzip libaio bc initscripts net-tools openssl && \
+RUN yum -y install unzip libaio bc initscripts net-tools openssl openssh-server supervisor && \
 	yum clean all && \
 	mv /usr/bin/free /usr/bin/free.bak && \
 	printf "#!/bin/sh\necho Swap - - 2048" > /usr/bin/free && \
@@ -42,5 +47,5 @@ RUN yum -y install unzip libaio bc initscripts net-tools openssl && \
 # Persistence folder
 VOLUME ["$ORACLE_BASE/oradata"]
 
-EXPOSE 1521 8080
-CMD $ORACLE_BASE/$START_FILE
+EXPOSE 22 1521 8080
+CMD ["/usr/bin/supervisord"]
