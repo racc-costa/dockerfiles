@@ -1,0 +1,5 @@
+[local-source]
+name=RHEL 7.3 local repo
+baseurl=file:///opt/
+enabled=1
+gpgcheck=0
