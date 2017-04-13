@@ -12,7 +12,7 @@ This image contains the official version of Red Hat Enterprise Linux with Oracle
 
 To run:
 
-	docker run -d --name redhat racccosta/rhel:7.3 bash
+	docker run --name redhat -it racccosta/rhel:7.3 bash
 
 ## Source
 
