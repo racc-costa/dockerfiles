@@ -1,8 +1,8 @@
 FROM registry.access.redhat.com/rhel7/rhel:7.3-79
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-RUN curl -OL ftp://fr2.rpmfind.net/linux/centos/7.3.1611/os/x86_64/Packages/tar-1.26-31.el7.x86_64.rpm && \
-	curl -OL ftp://fr2.rpmfind.net/linux/centos/7.3.1611/os/x86_64/Packages/wget-1.14-13.el7.x86_64.rpm && \ 
+RUN curl -OL ftp://fr2.rpmfind.net/linux/centos/7/os/x86_64/Packages/tar-1.26-31.el7.x86_64.rpm && \
+	curl -OL ftp://fr2.rpmfind.net/linux/centos/7/os/x86_64/Packages/wget-1.14-13.el7.x86_64.rpm && \ 
 	yum install -y tar-1.26-31.el7.x86_64.rpm && \
 	yum install -y wget-1.14-13.el7.x86_64.rpm && \
   yum clean all && \
