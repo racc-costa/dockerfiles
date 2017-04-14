@@ -5,18 +5,18 @@ This image contains the official version of Red Hat Enterprise Linux with Oracle
 
 # Supported tags and respective `Dockerfile` links
 
--	[7.3 (7.3/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/rhel/Dockerfile)
+-	[7.3 (7.3/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/rhel-jdk/Dockerfile)
 
 ## Usage
 
 
 To run:
 
-	docker run --name redhat -it racccosta/rhel:7.3 bash
+	docker run --name redhat -it racccosta/rhel-jdk:7.3 bash
 
 ## Source
 
-The source is available on [GitHub](https://github.com/racc-costa/dockerfiles/tree/master/rhel).
+The source is available on [GitHub](https://github.com/racc-costa/dockerfiles/tree/master/rhel-jdk).
 
 
 ## Issues
