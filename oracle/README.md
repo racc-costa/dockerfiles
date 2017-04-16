@@ -17,7 +17,12 @@ To run:
 or
 
 	docker run -d -p 1521:1521 -p 8080:8080 --name oracle --shm-size=1g -v /app/data:/u01/app/oracle/oradata racccosta/oracle:11.2.0.2-xe
-	
+
+To run and create a new user / schema:
+
+	docker run -d -p 1521:1521 -p 8080:8080 --name oracle --shm-size=1g -e "ORACLE_USR=username" -e "ORACLE_PWD=password" --name oracle --shm-size=1g racccosta/oracle:11.2.0.2-xe
+
+
 
 ## How to test
 
@@ -33,7 +38,7 @@ Default password:
 
 Using sqlplus:
 
-	docker exec -it oracle sqlplus system/oracle@localhost:1521/xe 
+	docker exec -it oracle sqlplus system/oracle@localhost:1521/xe
 
 
 Using Oracle Application Express:

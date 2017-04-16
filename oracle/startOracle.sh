@@ -84,6 +84,16 @@ EOF"
   moveFiles;
 }
 
+function createUser() {
+  su -p oracle -c "sqlplus / as sysdba << EOF
+        CREATE USER "$ORACLE_USR" IDENTIFIED BY "$ORACLE_PWD";
+        GRANT CREATE SESSION TO "$ORACLE_USR";
+        GRANT ALL PRIVILEGES TO "$ORACLE_USR";
+        exit;
+  EOF"
+  echo "User created: $ORACLE_USR"
+}
+
 # MAIN ------------------------------------------------------------------------
 
 echo -e "\n\nStarting Oracle - $(date)"
@@ -109,6 +119,10 @@ fi;
 /etc/init.d/oracle-xe start | grep -qc "Oracle Database 11g Express Edition is not configured"
 if [ "$?" == "0" ]; then
    createDB;
+fi;
+
+if [ ! -L $ORACLE_USR ] && [ ! -L $ORACLE_PWD ]; then
+  createUser;
 fi;
 
 echo -e "\n\nOracle is ready to use! - $(date)"
