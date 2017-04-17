@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel7/rhel:7.3-79
+FROM registry.access.redhat.com/rhel7/rhel:6.8
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Environment variables
