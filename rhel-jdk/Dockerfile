@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel6.8:6.8
+FROM registry.access.redhat.com/rhel7/rhel:7.3
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Environment variables
@@ -16,5 +16,4 @@ RUN cd /opt/ && \
 	rm -rf wget-1.14-13.el7.x86_64.rpm && \ 
 	wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz" && \
 	tar -xzf jdk-8u121-linux-x64.tar.gz && \
-  	rm -rf jdk-8u121-linux-x64.tar.gz 
-  
+  	rm -rf jdk-8u121-linux-x64.tar.gz
