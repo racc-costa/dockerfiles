@@ -10,7 +10,7 @@ COPY rhel-source.repo /etc/yum.repos.d/rhel-source.repo
 
 # Installing JDK
 RUN cd /opt/ && \
-	curl -OL ftp://fr2.rpmfind.net/linux/centos/7/os/x86_64/Packages/wget-1.12-8.el6.x86_64.rpm && \ 
+	curl -OL ftp://fr2.rpmfind.net/linux/centos/6.8/os/x86_64/Packages/wget-1.12-8.el6.x86_64.rpm && \ 
 	yum install -y wget-1.12-8.el6.x86_64.rpm && \
 	yum clean all && \
 	rm -rf wget-1.12-8.el6.x86_64.rpm && \ 
