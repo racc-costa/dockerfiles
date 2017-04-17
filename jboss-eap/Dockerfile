@@ -1,9 +1,9 @@
 FROM racccosta/rhel-jdk:6.8
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-ENV JBOSS_VERSION = 7.0
-ENV JBOSS_HOME = /opt/jboss-eap-$JBOSS_VERSION
-ENV LAUNCH_JBOSS_IN_BACKGROUND = true
+ENV JBOSS_VERSION 7.0
+ENV JBOSS_HOME /opt/jboss-eap-$JBOSS_VERSION
+ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
 COPY jboss-eap-7.0 $JBOSS_HOME
 
