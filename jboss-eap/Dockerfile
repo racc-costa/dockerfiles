@@ -11,4 +11,4 @@ RUN $JBOSS_HOME/bin/add-user.sh -s admin admin123!
 
 EXPOSE 4447 8080 8443 8787 9990 9993
 
-CMD $JBOSS_HOME/bin/standalone.sh -bmanagement 0.0.0.0 -b 0.0.0.0
+CMD $JBOSS_HOME/bin/standalone.sh --debug -bmanagement 0.0.0.0 -b 0.0.0.0
