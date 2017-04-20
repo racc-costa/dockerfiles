@@ -13,7 +13,9 @@ This image contains the official version of Red Hat Enterprise Linux with Oracle
 
 To run:
 
-	docker run --name redhat -it racccosta/rhel-jdk:7.3 bash
+	docker run -d -p 22:22 --name redhat -it racccosta/rhel:7.3
+	
+Client can access SSH as root without password.	
 
 ## Source
 
