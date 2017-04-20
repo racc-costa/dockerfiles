@@ -1,9 +1,13 @@
 FROM registry.access.redhat.com/rhel6.8:6.8
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-# Installing packages
+# Copying files
 COPY centos68.repo /etc/yum.repos.d/centos.repo
-RUN yum install -y openssh openssh-server openssh-clients sed vim-enhanced
+COPY supervisord.conf /etc/supervisord.conf
+
+# Installing packages
+RUN yum install -y openssh openssh-server openssh-clients sed vim-enhanced python-setuptools
+RUN easy_install supervisor
 
 # SSH configuration
 RUN sed -ri 's/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config && \
@@ -16,4 +20,5 @@ USER root
 WORKDIR /root
 
 EXPOSE 22
-CMD /usr/sbin/sshd -D
+
+CMD ["/usr/bin/supervisord"]
