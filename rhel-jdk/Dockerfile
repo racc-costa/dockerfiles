@@ -1,4 +1,4 @@
-FROM racccosta\rhel:6.8
+FROM racccosta/rhel:6.8
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Environment variables
