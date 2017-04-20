@@ -22,3 +22,4 @@ WORKDIR /root
 EXPOSE 22
 
 CMD ["/usr/bin/supervisord"]
+
