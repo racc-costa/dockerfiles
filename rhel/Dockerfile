@@ -7,7 +7,7 @@ COPY supervisord.conf /etc/supervisord.conf
 
 # Installing packages
 RUN yum install -y openssh openssh-server openssh-clients sed vim-enhanced python-setuptools && \
-    yum clean al
+    yum clean all
 RUN easy_install supervisor
 
 # SSH configuration
