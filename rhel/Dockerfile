@@ -1,8 +1,8 @@
-FROM registry.access.redhat.com/rhel6.8:6.8
+FROM registry.access.redhat.com/rhel7/rhel:7.3
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Copying files
-COPY centos68.repo /etc/yum.repos.d/centos.repo
+COPY centos73.repo /etc/yum.repos.d/centos.repo
 COPY supervisord.conf /etc/supervisord.conf
 
 # Installing packages
