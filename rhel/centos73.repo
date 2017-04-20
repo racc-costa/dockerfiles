@@ -1,5 +1,5 @@
 [centos]
 name=CentOS $releasever - $basearch
-baseurl=http://ftp.heanet.ie/pub/centos/7.3/os/$basearch/
+baseurl=http://ftp.heanet.ie/pub/centos/7.3.1611/os/$basearch/
 enabled=1
 gpgcheck=0
