@@ -1,4 +1,4 @@
-FROM racccosta/rhel:6.8
+FROM racccosta/rhel:7.3
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Installing packages
