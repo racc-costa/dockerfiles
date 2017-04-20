@@ -2,7 +2,8 @@ FROM racccosta/rhel:7.3
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Installing packages
-RUN yum install -y tar
+RUN yum install -y tar && \
+  yum clean all 
 
 # Environment variables
 ENV JAVA_HOME=/opt/jdk1.8.0_121
