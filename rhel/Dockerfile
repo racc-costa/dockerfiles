@@ -6,7 +6,8 @@ COPY centos73.repo /etc/yum.repos.d/centos.repo
 COPY supervisord.conf /etc/supervisord.conf
 
 # Installing packages
-RUN yum install -y openssh openssh-server openssh-clients sed vim-enhanced python-setuptools
+RUN yum install -y openssh openssh-server openssh-clients sed vim-enhanced python-setuptools && \
+    yum clean al
 RUN easy_install supervisor
 
 # SSH configuration
