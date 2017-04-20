@@ -6,7 +6,7 @@ This image contains the official version of Red Hat Enterprise Linux with OpenSS
 # Supported tags and respective `Dockerfile` links
 
 -	[7.3 (7.3/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/rhel/Dockerfile)
--	[6.8 (7.3/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/rhel/Dockerfile)
+-	[6.8 (6.8/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/rhel/Dockerfile68)
 
 ## Usage
 
