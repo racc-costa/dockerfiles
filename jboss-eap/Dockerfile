@@ -11,9 +11,6 @@ ENV LAUNCH_JBOSS_IN_BACKGROUND true
 COPY jboss-eap-7.0 $JBOSS_HOME
 RUN $JBOSS_HOME/bin/add-user.sh -s admin admin123!
 
-USER root
-WORKDIR /root
-
 EXPOSE 22 4447 8080 8443 8787 9990 9993
 
 CMD ["/usr/bin/supervisord"]
