@@ -1,16 +1,14 @@
 FROM racccosta/rhel:6.8
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-# Installing packages
-RUN yum install -y tar && \
-  yum clean all
-
 # Environment variables
 ENV JAVA_HOME=/opt/jdk1.8.0_121
 ENV PATH=$JAVA_HOME/bin:$PATH
 
-# Installing JDK
-RUN cd /opt/ && \
+# Installing packages and JDK
+RUN yum install -y tar && \
+  yum clean all && \
+  cd /opt/ && \
   curl -L -C - -b "oraclelicense=accept-securebackup-cookie" -O http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz  && \
   tar -xzf jdk-8u121-linux-x64.tar.gz  && \
   rm -rf jdk-8u121-linux-x64.tar.gz
