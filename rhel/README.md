@@ -14,7 +14,10 @@ This image contains the official version of Red Hat Enterprise Linux with OpenSS
 To run:
 
 	docker run -d -p 22:22 --name redhat -it racccosta/rhel:7.3
- 
+
+	docker run -d -p 22:22 --name redhat -it racccosta/rhel:6.8
+
+
 Client can access SSH as root without password.
 
 ## Source

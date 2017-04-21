@@ -1,11 +1,13 @@
 FROM registry.access.redhat.com/rhel6.8:6.8
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-# Installing packages
+# Copying files
 COPY centos68.repo /etc/yum.repos.d/centos.repo
 COPY supervisord.conf /etc/supervisord.conf
+
+# Installing packages
 RUN yum install -y openssh openssh-server openssh-clients sed vim-enhanced python-setuptools && \
-    yum clean all 
+    yum clean all
 RUN easy_install supervisor
 
 # SSH configuration
@@ -19,4 +21,5 @@ USER root
 WORKDIR /root
 
 EXPOSE 22
+
 CMD ["/usr/bin/supervisord"]

@@ -91,6 +91,9 @@ function createUser() {
         GRANT ALL PRIVILEGES TO "$ORACLE_USR";
         exit;
   EOF"
+  set ORACLE_PWD="***"
+  export ORACLE_PWD="***"
+  unset ORACLE_PWD
   echo "User created: $ORACLE_USR"
 }
 
