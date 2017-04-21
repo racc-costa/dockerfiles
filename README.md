@@ -1,4 +1,4 @@
-# My Docker files repository.
+# My Docker files repository
 
 - [JBoss Enterprise Application Platform](https://github.com/racc-costa/dockerfiles/tree/master/jboss-eap) on [Docker Hub](https://hub.docker.com/r/racccosta/jboss-eap/)
 
