@@ -1,6 +1,7 @@
-# JBoss Enterprise Application Platform on Red Hat Enterprise Linux image with OpenSSH
+# JBoss Enterprise Application Platform on Red Hat Enterprise Linux image with OpenSSH Server and Oracle JDK
 
-This image contains the developer version of JBoss Enterprise Application Platform on Red Hat Enterprise Linux image with OpenSSH.
+This image contains the developer version of JBoss Enterprise Application Platform on Red Hat Enterprise Linux image  with OpenSSH Server and Oracle JDK.
+
 
 # Supported tags and respective `Dockerfile` links
 
@@ -11,14 +12,13 @@ This image contains the developer version of JBoss Enterprise Application Platfo
 
 To run:
 
-	docker run -d -p 9990:9990 -p 8080:8080 -p 8443:8443 --name eap7 racccosta/jboss-eap:7.0
+	docker run -d -p 8080:8080 -p 8443:8443 -p 9990:9990 --name eap7 racccosta/jboss-eap:7.0
 
-or 
+or with all ports:
 
-	docker run -d -p 8080:8080 -p 9990:9990 -p 8443:8443 -p 8787:8787 -p 4447:4447 -p 22:22 --name eap7  racccosta/jboss-eap:7.0
+	docker run -d  -p 8080:8080 -p 8443:8443  -p 8787:8787  -p 9990:9990 -p 22:22 --name eap7  racccosta/jboss-eap:7.0
 
-Client can access SSH as root without password.
-
+Client can access SSH as 'root' with password 'developer'.
 
 ## How to test
 
