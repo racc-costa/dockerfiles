@@ -6,7 +6,6 @@ This image contains the developer version of JBoss Enterprise Application Platfo
 # Supported tags and respective `Dockerfile` links
 
 -	[7.0 (7.0/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/jboss-eap/Dockerfile)
--	[6.4 (6.4/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/jboss-eap/Dockerfile)
 
 ## Usage
 
