@@ -1,4 +1,4 @@
-# Red Hat Enterprise Linux image with OpenSSH
+# Red Hat Enterprise Linux image with OpenSSH Server
 
 This image contains the official version of Red Hat Enterprise Linux with OpenSSH.
 
@@ -10,15 +10,13 @@ This image contains the official version of Red Hat Enterprise Linux with OpenSS
 
 ## Usage
 
-
 To run:
 
-	docker run -d -p 22:22 --name redhat -it racccosta/rhel:7.3
+	docker run -d -p 22:22 --name redhat racccosta/rhel:7.3
 
-	docker run -d -p 22:22 --name redhat -it racccosta/rhel:6.8
+	docker run -d -p 22:22 --name redhat racccosta/rhel:6.8
 
-
-Client can access SSH as root without password.
+Client can access SSH as 'root' with password 'developer'.
 
 ## Source
 

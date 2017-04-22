@@ -6,14 +6,13 @@ COPY centos68.repo /etc/yum.repos.d/centos.repo
 COPY supervisord.conf /etc/supervisord.conf
 
 # Installing packages
-RUN yum install -y openssh openssh-server openssh-clients sed vim-enhanced python-setuptools && \
+RUN yum install -y openssh openssh-server sed vim-enhanced python-setuptools && \
   yum clean all && \
   easy_install supervisor && \
-  sed -ri 's/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config && \
   sed -ri 's/^UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
   /usr/bin/ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N "" && \
   /usr/bin/ssh-keygen -t dsa -b 1024 -f /etc/ssh/ssh_host_dsa_key -N "" && \
-  passwd -d root && \
+  echo "root:developer" | chpasswd && \
   echo 'cd /opt' >> /root/.bash_profile
 
 EXPOSE 22
