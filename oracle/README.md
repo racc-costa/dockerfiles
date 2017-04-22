@@ -1,6 +1,6 @@
-# Oracle Database image
+# Oracle Database Express Edition on Oracle Linux
 
-This image contains the official version of Oracle Database ([https://www.oracle.com/database](https://www.oracle.com/database)) on Oracle Linux.
+This image contains the developer version of Oracle Database ([http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)) on Oracle Linux.
 
 
 # Supported tags and respective `Dockerfile` links
@@ -8,7 +8,6 @@ This image contains the official version of Oracle Database ([https://www.oracle
 -	[11.2.0.2-xe (11.2.0.2-xe/Dockerfile)](https://github.com/racc-costa/dockerfiles/blob/master/oracle/Dockerfile)
 
 ## Usage
-
 
 To run:
 
@@ -21,7 +20,6 @@ or
 To run and create a new user / schema:
 
 	docker run -d -p 1521:1521 -p 8080:8080 --name oracle --shm-size=1g -e "ORACLE_USR=username" -e "ORACLE_PWD=password" --name oracle --shm-size=1g racccosta/oracle:11.2.0.2-xe
-
 
 
 ## How to test
@@ -57,8 +55,6 @@ Password: oracle
 
 
 ## Oracle documentation
-Oracle 12g Release 2 (12.2) documentation is avaliable on [Oracle Database Online Documentation 12g Release 2 (12.2)](http://www.oracle.com/technetwork/database/enterprise-edition/documentation/database-093888.html).
-
 Oracle 11g Release 2 (11.2) documentation is available on [Oracle Database Online Documentation 11g Release 2 (11.2)](http://docs.oracle.com/cd/E11882_01/index.htm).
 
 
