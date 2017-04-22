@@ -15,9 +15,10 @@ To run:
 
 or with all ports:
 
-	docker run -d  -p 8080:8080 -p 8443:8443  -p 8787:8787  -p 9990:9990 -p 22:22 --name eap7  racccosta/jboss-eap:7.0
+	docker run -d  -p 22:22 -p 8080:8080 -p 8443:8443  -p 8787:8787  -p 9990:9990 --name eap7  racccosta/jboss-eap:7.0
 
 Client can access SSH as 'root' with password 'developer'.
+Remote debug is enabled at port 8787.
 
 ## How to test
 
@@ -27,11 +28,13 @@ login: admin
 password: admin123!
 
 ## JBoss EAP documentation
+
 JBoss Enterprise Application Platform documentation is avaliable on [JBoss Enterprise Application Platform documentation](https://access.redhat.com/documentation/pt/red-hat-jboss-enterprise-application-platform/).
 
 ## Source
 
 The source is available on [GitHub](https://github.com/racc-costa/dockerfiles/tree/master/jboss-eap).
+Before you can build the image, download JBoss EAP 7.0 from http://www.jboss.org/products/eap/download/ in this directory.
 
 
 ## Issues
