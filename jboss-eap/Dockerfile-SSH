@@ -1,4 +1,4 @@
-FROM racccosta/rhel-jdk:7.3
+FROM racccosta/rhel-jdk:7.3-SSH
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Copying files
