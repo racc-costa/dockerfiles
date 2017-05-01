@@ -1,4 +1,4 @@
-[![Codefresh build status]( https://g.codefresh.io/api/badges/build?repoOwner=racc-costa&repoName=dockerfiles&branch=master&pipelineName=dockerfiles&accountName=racc-costa&type=cf-1)]( https://g.codefresh.io/repositories/racc-costa/dockerfiles/builds?filter=trigger:build;branch:master;service:59067f51d97da00008722dda~dockerfiles)
+[![Codefresh build status]( https://g.codefresh.io/api/badges/build?repoOwner=racc-costa&repoName=dockerfiles&branch=master&pipelineName=RHEL&accountName=racc-costa&type=cf-1)]( https://g.codefresh.io/repositories/racc-costa/dockerfiles/builds?filter=trigger:build;branch:master;service:59067f51d97da00008722dda~dockerfiles)
 
 # Red Hat Enterprise Linux image and Red Hat Enterprise Linux image with OpenSSH Server
 

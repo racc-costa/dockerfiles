@@ -1,4 +1,4 @@
-FROM racccosta/rhel:6.8
+FROM racccosta/rhel:6.8-SSH
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Environment variables
@@ -15,4 +15,4 @@ RUN yum install -y tar && \
 
 EXPOSE 22
 
-CMD ["bash"]
+CMD ["/usr/bin/supervisord"]
