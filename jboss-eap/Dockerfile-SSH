@@ -3,6 +3,7 @@ MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 # Copying files
 COPY supervisord.conf /etc/supervisord.conf
+COPY supervisord-debug.conf /etc/supervisord-debug.conf
 
 # Installing JBoss
 ENV JBOSS_VERSION 7.0
