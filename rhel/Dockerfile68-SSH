@@ -1,6 +1,11 @@
 FROM registry.access.redhat.com/rhel6.8:6.8
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
+LABEL name="racccosta/rhel" \
+ maintainer="Ricardo Costa <racc.costa@gmail.com>" \
+ summary="Red Hat Enterprise Linux 6.8 with Open-SSH" \
+ description="Red Hat Enterprise Linux 6.8 with Open-SSH"
+ 
 # Copying files
 COPY centos68.repo /etc/yum.repos.d/centos.repo
 COPY supervisord.conf /etc/supervisord.conf
