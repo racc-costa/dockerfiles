@@ -1,12 +1,11 @@
 FROM registry.access.redhat.com/rhel7/rhel:7.3
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
-
 LABEL name="racccosta/rhel" \
  maintainer="Ricardo Costa <racc.costa@gmail.com>" \
  summary="Red Hat Enterprise Linux 7.3" \
  description="Red Hat Enterprise Linux 7.3"
- 
+
 # Copying files
 COPY centos73.repo /etc/yum.repos.d/centos.repo
 

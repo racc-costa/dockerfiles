@@ -1,16 +1,21 @@
 FROM racccosta/rhel:7.3
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
+LABEL name="racccosta/rhel-jdk" \
+ maintainer="Ricardo Costa <racc.costa@gmail.com>" \
+ summary="Red Hat Enterprise Linux 7.3 with Oracle JDK 8" \
+ description="Red Hat Enterprise Linux 7.3 with Oracle JDK 8"
+
 # Environment variables
-ENV JAVA_HOME=/opt/jdk1.8.0_121
+ENV JAVA_HOME=/opt/jdk1.8.0_131
 ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Installing packages and JDK
 RUN yum install -y tar && \
   yum clean all && \
   cd /opt/ && \
-  curl -L -C - -b "oraclelicense=accept-securebackup-cookie" -O http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz  && \
-  tar -xzf jdk-8u121-linux-x64.tar.gz  && \
-  rm -rf jdk-8u121-linux-x64.tar.gz
+  curl -L -C - -b "oraclelicense=accept-securebackup-cookie" -O http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz && \
+  tar -xzf jdk-8u131-linux-x64.tar.gz  && \
+  rm -rf jdk-8u131-linux-x64.tar.gz
 
 CMD ["bash"]
