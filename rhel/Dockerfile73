@@ -6,13 +6,8 @@ LABEL name="racccosta/rhel" \
  summary="Red Hat Enterprise Linux 7.3" \
  description="Red Hat Enterprise Linux 7.3"
 
-# Copying files
-COPY centos73.repo /etc/yum.repos.d/centos.repo
-
 # Installing packages
-RUN yum install -y vim-enhanced && \
-  yum clean all && \
-  echo "root:developer" | chpasswd && \
+RUN echo "root:developer" | chpasswd && \
   echo 'cd /opt' >> /root/.bash_profile
 
 CMD ["bash"]

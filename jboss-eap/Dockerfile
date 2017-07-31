@@ -1,6 +1,11 @@
 FROM racccosta/rhel-jdk:7.3
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
+LABEL name="racccosta/jboss-eap" \
+ maintainer="Ricardo Costa <racc.costa@gmail.com>" \
+ summary="JBoss Enterprise Application Platform 7.0" \
+ description="JBoss Enterprise Application Platform 7.0"
+
 # Installing JBoss
 ENV JBOSS_VERSION 7.0
 ENV JBOSS_HOME /opt/jboss-eap-$JBOSS_VERSION

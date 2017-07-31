@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel6.8:6.8
+FROM FROM racccosta/rhel:6.8
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 LABEL name="racccosta/rhel" \
@@ -16,9 +16,7 @@ RUN yum install -y openssh openssh-server sed vim-enhanced python-setuptools && 
   easy_install supervisor && \
   sed -ri 's/^UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
   /usr/bin/ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N "" && \
-  /usr/bin/ssh-keygen -t dsa -b 1024 -f /etc/ssh/ssh_host_dsa_key -N "" && \
-  echo "root:developer" | chpasswd && \
-  echo 'cd /opt' >> /root/.bash_profile
+  /usr/bin/ssh-keygen -t dsa -b 1024 -f /etc/ssh/ssh_host_dsa_key -N ""
 
 EXPOSE 22
 
