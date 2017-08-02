@@ -1,4 +1,4 @@
-FROM FROM racccosta/rhel:7.3
+FROM racccosta/rhel:7.3
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
 LABEL name="racccosta/rhel" \

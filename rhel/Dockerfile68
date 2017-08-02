@@ -6,7 +6,11 @@ LABEL name="racccosta/rhel" \
  summary="Red Hat Enterprise Linux 6.8" \
  description="Red Hat Enterprise Linux 6.8"
 
-# Installing packages
+ # Copying files
+ COPY centos68.repo /etc/yum.repos.d/centos.repo
+ COPY supervisord.conf /etc/supervisord.conf
+
+# Setting password e default folder
 RUN echo "root:developer" | chpasswd && \
   echo 'cd /opt' >> /root/.bash_profile
 
