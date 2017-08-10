@@ -1,4 +1,4 @@
-# Red Hat Enterprise Linux image and Red Hat Enterprise Linux image with OpenSSH Server
+# Red Hat Enterprise Linux and Red Hat Enterprise Linux with OpenSSH Server
 
 This image is based on the official version of Red Hat Enterprise Linux .
 

@@ -1,6 +1,11 @@
 FROM oraclelinux:7-slim
 MAINTAINER Ricardo Costa <racc.costa@gmail.com>
 
+LABEL name="racccosta/oracle" \
+ maintainer="Ricardo Costa <racc.costa@gmail.com>" \
+ summary="Oracle Database Express Edition 11g" \
+ description="Oracle Database Express Edition 11g"
+
 # Environment variables
 ENV ORACLE_BASE=/u01/app/oracle \
 	ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe \
